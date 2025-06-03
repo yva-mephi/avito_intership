@@ -43,12 +43,15 @@ bun start
 
 # Запуст backend'а
 cd server
-make initial-start
+make initial-start![image](https://github.com/user-attachments/assets/705fa719-1322-4bc4-9cb7-c78213441cfe)
+
 
 # Запуск backend + frontend
 docker-compose up --build
 ```
-
+- Клиентская часть запускается на http://localhost:3000/
+- Серверная часть запускатеся на http://localhost:8080/api/v1
+- 
 ## Обоснование технологий
 
 - **TypeScript** — строгая типизация ускоряет разработку и уменьшает баги.
@@ -58,3 +61,8 @@ docker-compose up --build
 - **Docker** - обеспечивает кроссплатформенность и быстрый старт
 - **ESLint** - выявление багов, повышение качества кода
 - **Prettier** - автоматическое форматирование кода, повышение читаемости
+
+![image](https://github.com/user-attachments/assets/336f5556-45a0-479b-9cff-188b12b5362e)
+![image](https://github.com/user-attachments/assets/019c5d65-b379-4102-89b8-3a41b3a188e4)
+
+![image](https://github.com/user-attachments/assets/3c1ac0aa-154b-4f9b-8899-3b798375f9df)
