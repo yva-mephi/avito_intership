@@ -7,9 +7,9 @@
       "module": "ESNext",
       "skipLibCheck": true,
 
-      "baseUrl": "src", // очень важно!
+      "baseUrl": "src",
       "paths": {
-         "@/*": ["./*"] // теперь @ указывает на src/
+         "@/*": ["./*"]
       },
 
       /* Bundler mode */

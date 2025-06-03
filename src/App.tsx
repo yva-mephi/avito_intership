@@ -4,22 +4,27 @@ import { BoardsPage } from './pages/boards/BoardsPage';
 import { IssuePage } from './pages/issues/IssuePage';
 import { Header } from './components/header/Header';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
-import { CreateIssueModal } from './components/header/CreateIssueModal';
+import { TaskModalProvider } from './context/TaskModalContext';
+import { TaskLogic } from './components/taskForm/TaskLogic';
+import { Box } from '@mui/material';
 
 function App() {
-   const [modalOpen, setModalOpen] = useState(false);
    return (
       <Router>
-         <Header onOpenModal={() => setModalOpen(true)} />
-         <CreateIssueModal open={modalOpen} onClose={() => setModalOpen(false)} />
-
-         <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route path="/boards" element={<BoardsPage />} />
-            <Route path="/board/:id" element={<BoardPage />} />
-            <Route path="/issues" element={<IssuePage />} />
-         </Routes>
+         <TaskModalProvider>
+            <Box display="flex" flexDirection="column" height="100vh">
+               <Header />
+               <TaskLogic />
+               <Box flex={1} overflow={location.pathname === '/' ? 'hidden' : 'auto'}>
+                  <Routes>
+                     <Route path="/" element={<MainPage />} />
+                     <Route path="/boards" element={<BoardsPage />} />
+                     <Route path="/board/:id" element={<BoardPage />} />
+                     <Route path="/issues" element={<IssuePage />} />
+                  </Routes>
+               </Box>
+            </Box>
+         </TaskModalProvider>
       </Router>
    );
 }

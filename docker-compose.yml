@@ -1,0 +1,26 @@
+services:
+   backend:
+      build:
+         context: ./server
+         dockerfile: Dockerfile
+      container_name: avito-backend
+      ports:
+         - '8080:8080'
+      networks:
+         - app-network
+
+   frontend:
+      build:
+         context: ./
+         dockerfile: Dockerfile
+      container_name: avito-frontend
+      ports:
+         - '3000:80'
+      depends_on:
+         - backend
+      networks:
+         - app-network
+
+networks:
+   app-network:
+      driver: bridge
