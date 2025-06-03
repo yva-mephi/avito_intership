@@ -1,54 +1,60 @@
-# React + TypeScript + Vite
+# Avito Internship 2025 — Project Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Мини-система управления проектами, разработанная как тестовое задание для стажировки Avito (Frontend, весна 2025).
 
-Currently, two official plugins are available:
+[Задание (GitHub)](https://github.com/avito-tech/tech-internship/tree/main/Tech%20Internships/Frontend/Frontend-trainee-assignment-spring-2025)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Возможности
 
-## Expanding the ESLint configuration
+- Просмотр всех задач с фильтрами и поиском
+- Просмотр всех досок
+- Просмотр задач на конкретной доске (разделение по статусам)
+- Создание и редактирование задач через модальные окна
+- Переход из задачи на соответствующую доску
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Используемые технологии
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- **React**
+- **TypeScript**
+- **React Router** — роутинг
+- **Material UI** — UI-компоненты
+- **Axios** — для HTTP-запросов
+- **Vite** - сборка проекта
+- **Docker** - сборка проекта с сервером
+
+## Страницы
+
+- `/issues` — список всех задач
+- `/boards` — список досок
+- `/board/:id` — конкретная доска с задачами по статусам
+
+## Установка и запуск
+
+```bash
+# Склонировать репозиторий
+git clone git@github.com:yva-mephi/avito_intership.git
+cd avito_intership
+
+# Установить зависимости
+bun i
+
+# Запустить dev-сервер
+bun start
+
+# Запуст backend'а
+cd server
+make initial-start
+
+# Запуск backend + frontend
+docker-compose up --build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Обоснование технологий
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- **TypeScript** — строгая типизация ускоряет разработку и уменьшает баги.
+- **Material UI** — быстрое прототипирование и стильный внешний вид без необходимости писать CSS.
+- **Axios** — удобный и компактный инструмент для работы с API.
+- **Vite** - оптимален для разработки на React + TypeScript и обеспечивает мгновенный отклик
+- **Docker** - обеспечивает кроссплатформенность и быстрый старт
+- **ESLint** - выявление багов, повышение качества кода
+- **Prettier** - автоматическое форматирование кода, повышение читаемости
