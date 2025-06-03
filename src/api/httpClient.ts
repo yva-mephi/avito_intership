@@ -11,7 +11,7 @@ export class HttpClient {
    }
 
    get<T>(url: string, config?: AxiosRequestConfig) {
-      return this.instance.get<T>(url, config).then((res) => res.data);
+      return this.instance.get(url, config).then((res) => res.data.data as T);
    }
 
    post<T>(url: string, data?: unknown, config?: AxiosRequestConfig) {

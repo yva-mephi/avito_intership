@@ -4,8 +4,7 @@ import type { Task } from '@/types/taskType';
 export class IssuesApi {
    async getAllIssues(): Promise<Task[]> {
       try {
-         const res = await httpClient.get<{ data: Task[] }>('/tasks');
-         return res.data;
+         return await httpClient.get<Task[]>('/tasks');
       } catch (error) {
          console.error('Ошибка загрузки задач:', error);
          return [];
@@ -30,18 +29,18 @@ export class IssuesApi {
       }
    }
 
-   async updateIssue(id: string, updatedFields: Partial<Task>): Promise<Task | null> {
+   async updateIssue(id: number, updatedFields: Partial<Task>): Promise<Task | null> {
       try {
-         return await httpClient.patch<Task>(`/tasks/update/${id}`, updatedFields);
+         return await httpClient.put<Task>(`/tasks/update/${id}`, updatedFields);
       } catch (error) {
          console.error(`Ошибка обновления задачи ${id}:`, error);
          return null;
       }
    }
 
-   async updateIssueStatus(id: string, status: Task['status']): Promise<Task | null> {
+   async updateIssueStatus(id: number, status: Task['status']): Promise<Task | null> {
       try {
-         return await httpClient.patch<Task>(`/tasks/updateStatus/${id}`, { status });
+         return await httpClient.put<Task>(`/tasks/updateStatus/${id}`, { status });
       } catch (error) {
          console.error(`Ошибка обновления статуса задачи ${id}:`, error);
          return null;

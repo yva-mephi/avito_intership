@@ -1,5 +1,6 @@
 import { httpClient } from '../httpClient';
 import type { Board } from '@/types/boardType';
+import type { Task } from '@/types/taskType';
 
 export class BoardsApi {
    async getAllBoards(): Promise<Board[]> {
@@ -11,9 +12,9 @@ export class BoardsApi {
       }
    }
 
-   async getBoardById(id: number): Promise<Board | null> {
+   async getBoardById(id: number): Promise<Task[] | null> {
       try {
-         return await httpClient.get<Board>(`/boards/${id}`);
+         return await httpClient.get<Task[]>(`/boards/${id}`);
       } catch (error) {
          console.error(`Ошибка загрузки доски с id=${id}:`, error);
          return null;
